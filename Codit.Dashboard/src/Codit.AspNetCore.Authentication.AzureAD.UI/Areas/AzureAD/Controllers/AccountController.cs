@@ -14,17 +14,17 @@ namespace Codit.AspNetCore.Authentication.AzureADv2.UI.AzureAD.Controllers.Inter
     [Route("[area]/[controller]/[action]")]
     internal class AccountController : Controller
     {
-        public AccountController(IOptionsMonitor<AzureADOptions> options)
+        public AccountController(IOptionsMonitor<AzureADv2Options> options)
         {
             Options = options;
         }
 
-        public IOptionsMonitor<AzureADOptions> Options { get; }
+        public IOptionsMonitor<AzureADv2Options> Options { get; }
 
         [HttpGet("{scheme?}")]
         public IActionResult SignIn([FromRoute] string scheme)
         {
-            scheme = scheme ?? AzureADDefaults.AuthenticationScheme;
+            scheme = scheme ?? AzureADv2Defaults.AuthenticationScheme;
             var redirectUrl = Url.Content("~/");
             return Challenge(
                 new AuthenticationProperties { RedirectUri = redirectUrl },
@@ -34,7 +34,7 @@ namespace Codit.AspNetCore.Authentication.AzureADv2.UI.AzureAD.Controllers.Inter
         [HttpGet("{scheme?}")]
         public IActionResult SignOut([FromRoute] string scheme)
         {
-            scheme = scheme ?? AzureADDefaults.AuthenticationScheme;
+            scheme = scheme ?? AzureADv2Defaults.AuthenticationScheme;
             var options = Options.Get(scheme);
             var callbackUrl = Url.Page("/Account/SignedOut", pageHandler: null, values: null, protocol: Request.Scheme);
             return SignOut(

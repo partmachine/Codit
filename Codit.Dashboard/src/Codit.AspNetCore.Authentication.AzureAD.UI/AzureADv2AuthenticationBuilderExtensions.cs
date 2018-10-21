@@ -24,14 +24,14 @@ namespace Microsoft.AspNetCore.Authentication
         /// Adds JWT Bearer authentication to your app for Azure Active Directory Applications.
         /// </summary>
         /// <param name="builder">The <see cref="AuthenticationBuilder"/>.</param>
-        /// <param name="configureOptions">The <see cref="Action{AzureADOptions}"/> to configure the
-        /// <see cref="AzureADOptions"/>.
+        /// <param name="configureOptions">The <see cref="Action{AzureADv2Options}"/> to configure the
+        /// <see cref="AzureADv2Options"/>.
         /// </param>
         /// <returns>The <see cref="AuthenticationBuilder"/>.</returns>
-        public static AuthenticationBuilder AddAzureADBearer(this AuthenticationBuilder builder, Action<AzureADOptions> configureOptions) =>
+        public static AuthenticationBuilder AddAzureADBearer(this AuthenticationBuilder builder, Action<AzureADv2Options> configureOptions) =>
             builder.AddAzureADBearer(
-                AzureADDefaults.BearerAuthenticationScheme,
-                AzureADDefaults.JwtBearerAuthenticationScheme,
+                AzureADv2Defaults.BearerAuthenticationScheme,
+                AzureADv2Defaults.JwtBearerAuthenticationScheme,
                 configureOptions);
 
         /// <summary>
@@ -40,15 +40,15 @@ namespace Microsoft.AspNetCore.Authentication
         /// <param name="builder">The <see cref="AuthenticationBuilder"/>.</param>
         /// <param name="scheme">The identifier for the virtual scheme.</param>
         /// <param name="jwtBearerScheme">The identifier for the underlying JWT Bearer scheme.</param>
-        /// <param name="configureOptions">The <see cref="Action{AzureADOptions}"/> to configure the
-        /// <see cref="AzureADOptions"/>.
+        /// <param name="configureOptions">The <see cref="Action{AzureADv2Options}"/> to configure the
+        /// <see cref="AzureADv2Options"/>.
         /// </param>
         /// <returns>The <see cref="AuthenticationBuilder"/>.</returns>
         public static AuthenticationBuilder AddAzureADBearer(
             this AuthenticationBuilder builder,
             string scheme,
             string jwtBearerScheme,
-            Action<AzureADOptions> configureOptions)
+            Action<AzureADv2Options> configureOptions)
         {
 
             builder.AddPolicyScheme(scheme, displayName: null, configureOptions: o =>
@@ -58,7 +58,7 @@ namespace Microsoft.AspNetCore.Authentication
 
             builder.Services.Configure(TryAddJwtBearerSchemeMapping(scheme, jwtBearerScheme));
 
-            builder.Services.TryAddSingleton<IConfigureOptions<AzureADOptions>, AzureADv2OptionsConfiguration>();
+            builder.Services.TryAddSingleton<IConfigureOptions<AzureADv2Options>, AzureADv2OptionsConfiguration>();
 
             builder.Services.TryAddSingleton<IConfigureOptions<JwtBearerOptions>, JwtBearerOptionsConfiguration>();
 
@@ -72,16 +72,16 @@ namespace Microsoft.AspNetCore.Authentication
         /// Adds Azure Active Directory Authentication to your application.
         /// </summary>
         /// <param name="builder">The <see cref="AuthenticationBuilder"/>.</param>
-        /// <param name="configureOptions">The <see cref="Action{AzureADOptions}"/> to configure the
-        /// <see cref="AzureADOptions"/>
+        /// <param name="configureOptions">The <see cref="Action{AzureADv2Options}"/> to configure the
+        /// <see cref="AzureADv2Options"/>
         /// </param>
         /// <returns>The <see cref="AuthenticationBuilder"/>.</returns>
-        public static AuthenticationBuilder AddAzureAD(this AuthenticationBuilder builder, Action<AzureADOptions> configureOptions) =>
+        public static AuthenticationBuilder AddAzureAD(this AuthenticationBuilder builder, Action<AzureADv2Options> configureOptions) =>
             builder.AddAzureAD(
-                AzureADDefaults.AuthenticationScheme,
-                AzureADDefaults.OpenIdScheme,
-                AzureADDefaults.CookieScheme,
-                AzureADDefaults.DisplayName,
+                AzureADv2Defaults.AuthenticationScheme,
+                AzureADv2Defaults.OpenIdScheme,
+                AzureADv2Defaults.CookieScheme,
+                AzureADv2Defaults.DisplayName,
                 configureOptions);
 
         /// <summary>
@@ -92,8 +92,8 @@ namespace Microsoft.AspNetCore.Authentication
         /// <param name="openIdConnectScheme">The identifier for the underlying Open ID Connect scheme.</param>
         /// <param name="cookieScheme">The identifier for the underlying cookie scheme.</param>
         /// <param name="displayName">The display name for the scheme.</param>
-        /// <param name="configureOptions">The <see cref="Action{AzureADOptions}"/> to configure the
-        /// <see cref="AzureADOptions"/>
+        /// <param name="configureOptions">The <see cref="Action{AzureADv2Options}"/> to configure the
+        /// <see cref="AzureADv2Options"/>
         /// </param>
         /// <returns>The <see cref="AuthenticationBuilder"/>.</returns>
         public static AuthenticationBuilder AddAzureAD(
@@ -102,7 +102,7 @@ namespace Microsoft.AspNetCore.Authentication
             string openIdConnectScheme,
             string cookieScheme,
             string displayName,
-            Action<AzureADOptions> configureOptions)
+            Action<AzureADv2Options> configureOptions)
         {
             AddAdditionalMvcApplicationParts(builder.Services);
             builder.AddPolicyScheme(scheme, displayName, o =>
@@ -113,7 +113,7 @@ namespace Microsoft.AspNetCore.Authentication
 
             builder.Services.Configure(TryAddOpenIDCookieSchemeMappings(scheme, openIdConnectScheme, cookieScheme));
 
-            builder.Services.TryAddSingleton<IConfigureOptions<AzureADOptions>, AzureADv2OptionsConfiguration>();
+            builder.Services.TryAddSingleton<IConfigureOptions<AzureADv2Options>, AzureADv2OptionsConfiguration>();
 
             builder.Services.TryAddSingleton<IConfigureOptions<OpenIdConnectOptions>, OpenIdConnectOptionsConfiguration>();
 
@@ -127,11 +127,11 @@ namespace Microsoft.AspNetCore.Authentication
             return builder;
         }
 
-        private static Action<AzureADSchemeOptions> TryAddJwtBearerSchemeMapping(string scheme, string jwtBearerScheme)
+        private static Action<AzureADv2SchemeOptions> TryAddJwtBearerSchemeMapping(string scheme, string jwtBearerScheme)
         {
             return TryAddMapping;
 
-            void TryAddMapping(AzureADSchemeOptions o)
+            void TryAddMapping(AzureADv2SchemeOptions o)
             {
                 if (o.JwtBearerMappings.ContainsKey(scheme))
                 {
@@ -146,18 +146,18 @@ namespace Microsoft.AspNetCore.Authentication
                             $"The JSON Web Token Bearer scheme '{jwtBearerScheme}' is already mapped to the Azure Active Directory scheme '{mapping.Key}'");
                     }
                 }
-                o.JwtBearerMappings.Add(scheme, new AzureADSchemeOptions.JwtBearerSchemeMapping
+                o.JwtBearerMappings.Add(scheme, new AzureADv2SchemeOptions.JwtBearerSchemeMapping
                 {
                     JwtBearerScheme = jwtBearerScheme
                 });
             };
         }
 
-        private static Action<AzureADSchemeOptions> TryAddOpenIDCookieSchemeMappings(string scheme, string openIdConnectScheme, string cookieScheme)
+        private static Action<AzureADv2SchemeOptions> TryAddOpenIDCookieSchemeMappings(string scheme, string openIdConnectScheme, string cookieScheme)
         {
             return TryAddMapping;
 
-            void TryAddMapping(AzureADSchemeOptions o)
+            void TryAddMapping(AzureADv2SchemeOptions o)
             {
                 if (o.OpenIDMappings.ContainsKey(scheme))
                 {
@@ -179,7 +179,7 @@ namespace Microsoft.AspNetCore.Authentication
                             $"The Open ID Connect scheme '{openIdConnectScheme}' is already mapped to the Azure Active Directory scheme '{mapping.Key}'");
                     }
                 }
-                o.OpenIDMappings.Add(scheme, new AzureADSchemeOptions.AzureADOpenIDSchemeMapping
+                o.OpenIDMappings.Add(scheme, new AzureADv2SchemeOptions.AzureADOpenIDSchemeMapping
                 {
                     OpenIdConnectScheme = openIdConnectScheme,
                     CookieScheme = cookieScheme

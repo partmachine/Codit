@@ -10,28 +10,28 @@ namespace Microsoft.AspNetCore.Authentication
 {
     internal class JwtBearerOptionsConfiguration : IConfigureNamedOptions<JwtBearerOptions>
     {
-        private readonly IOptions<AzureADSchemeOptions> _schemeOptions;
-        private readonly IOptionsMonitor<AzureADOptions> _azureADOptions;
+        private readonly IOptions<AzureADv2SchemeOptions> _schemeOptions;
+        private readonly IOptionsMonitor<AzureADv2Options> _AzureADv2Options;
 
         public JwtBearerOptionsConfiguration(
-            IOptions<AzureADSchemeOptions> schemeOptions,
-            IOptionsMonitor<AzureADOptions> azureADOptions)
+            IOptions<AzureADv2SchemeOptions> schemeOptions,
+            IOptionsMonitor<AzureADv2Options> AzureADv2Options)
         {
             _schemeOptions = schemeOptions;
-            _azureADOptions = azureADOptions;
+            _AzureADv2Options = AzureADv2Options;
         }
 
         public void Configure(string name, JwtBearerOptions options)
         {
             var azureADScheme = GetAzureADScheme(name);
-            var azureADOptions = _azureADOptions.Get(azureADScheme);
-            if (name != azureADOptions.JwtBearerSchemeName)
+            var AzureADv2Options = _AzureADv2Options.Get(azureADScheme);
+            if (name != AzureADv2Options.JwtBearerSchemeName)
             {
                 return;
             }
 
-            options.Audience = azureADOptions.ClientId;
-            options.Authority = new Uri(new Uri(azureADOptions.Instance), azureADOptions.TenantId).ToString();
+            options.Audience = AzureADv2Options.ClientId;
+            options.Authority = new Uri(new Uri(AzureADv2Options.Instance), AzureADv2Options.TenantId).ToString();
         }
 
         public void Configure(JwtBearerOptions options)

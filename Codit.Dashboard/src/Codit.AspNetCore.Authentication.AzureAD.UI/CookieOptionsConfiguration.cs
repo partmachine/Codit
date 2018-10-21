@@ -8,20 +8,20 @@ namespace Codit.AspNetCore.Authentication.AzureADv2.UI
 {
     internal class CookieOptionsConfiguration : IConfigureNamedOptions<CookieAuthenticationOptions>
     {
-        private readonly IOptions<AzureADSchemeOptions> _schemeOptions;
-        private readonly IOptionsMonitor<AzureADOptions> _AzureADOptions;
+        private readonly IOptions<AzureADv2SchemeOptions> _schemeOptions;
+        private readonly IOptionsMonitor<AzureADv2Options> _AzureADv2Options;
 
-        public CookieOptionsConfiguration(IOptions<AzureADSchemeOptions> schemeOptions, IOptionsMonitor<AzureADOptions> AzureADOptions)
+        public CookieOptionsConfiguration(IOptions<AzureADv2SchemeOptions> schemeOptions, IOptionsMonitor<AzureADv2Options> AzureADv2Options)
         {
             _schemeOptions = schemeOptions;
-            _AzureADOptions = AzureADOptions;
+            _AzureADv2Options = AzureADv2Options;
         }
 
         public void Configure(string name, CookieAuthenticationOptions options)
         {
             var AzureADScheme = GetAzureADScheme(name);
-            var AzureADOptions = _AzureADOptions.Get(AzureADScheme);
-            if (name != AzureADOptions.CookieSchemeName)
+            var AzureADv2Options = _AzureADv2Options.Get(AzureADScheme);
+            if (name != AzureADv2Options.CookieSchemeName)
             {
                 return;
             }

@@ -5,16 +5,16 @@ using Microsoft.Extensions.Options;
 
 namespace Codit.AspNetCore.Authentication.AzureADv2.UI
 {
-    internal class AzureADv2OptionsConfiguration : IConfigureNamedOptions<AzureADOptions>
+    internal class AzureADv2OptionsConfiguration : IConfigureNamedOptions<AzureADv2Options>
     {
-        private readonly IOptions<AzureADSchemeOptions> _schemeOptions;
+        private readonly IOptions<AzureADv2SchemeOptions> _schemeOptions;
 
-        public AzureADv2OptionsConfiguration(IOptions<AzureADSchemeOptions> schemeOptions)
+        public AzureADv2OptionsConfiguration(IOptions<AzureADv2SchemeOptions> schemeOptions)
         {
             _schemeOptions = schemeOptions;
         }
 
-        public void Configure(string name, AzureADOptions options)
+        public void Configure(string name, AzureADv2Options options)
         {
             // This can be called because of someone configuring JWT or someone configuring
             // Open ID + Cookie.
@@ -31,7 +31,7 @@ namespace Codit.AspNetCore.Authentication.AzureADv2.UI
             }
         }
 
-        public void Configure(AzureADOptions options)
+        public void Configure(AzureADv2Options options)
         {
         }
     }

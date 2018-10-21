@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Codit.AspNetCore.Authentication.AzureADv2.UI
 {
-    internal class AzureADSchemeOptions
+    internal class AzureADv2SchemeOptions
     {
         public IDictionary<string, AzureADOpenIDSchemeMapping> OpenIDMappings { get; set; } = new Dictionary<string, AzureADOpenIDSchemeMapping>();
 

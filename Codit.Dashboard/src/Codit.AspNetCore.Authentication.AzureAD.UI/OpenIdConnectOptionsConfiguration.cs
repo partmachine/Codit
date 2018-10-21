@@ -9,30 +9,30 @@ namespace Codit.AspNetCore.Authentication.AzureADv2.UI
 {
     internal class OpenIdConnectOptionsConfiguration : IConfigureNamedOptions<OpenIdConnectOptions>
     {
-        private readonly IOptions<AzureADSchemeOptions> _schemeOptions;
-        private readonly IOptionsMonitor<AzureADOptions> _azureADOptions;
+        private readonly IOptions<AzureADv2SchemeOptions> _schemeOptions;
+        private readonly IOptionsMonitor<AzureADv2Options> _AzureADv2Options;
 
-        public OpenIdConnectOptionsConfiguration(IOptions<AzureADSchemeOptions> schemeOptions, IOptionsMonitor<AzureADOptions> azureADOptions)
+        public OpenIdConnectOptionsConfiguration(IOptions<AzureADv2SchemeOptions> schemeOptions, IOptionsMonitor<AzureADv2Options> AzureADv2Options)
         {
             _schemeOptions = schemeOptions;
-            _azureADOptions = azureADOptions;
+            _AzureADv2Options = AzureADv2Options;
         }
 
         public void Configure(string name, OpenIdConnectOptions options)
         {
             var azureADScheme = GetAzureADScheme(name);
-            var azureADOptions = _azureADOptions.Get(azureADScheme);
-            if (name != azureADOptions.OpenIdConnectSchemeName)
+            var AzureADv2Options = _AzureADv2Options.Get(azureADScheme);
+            if (name != AzureADv2Options.OpenIdConnectSchemeName)
             {
                 return;
             }
 
-            options.ClientId = azureADOptions.ClientId;
-            options.ClientSecret = azureADOptions.ClientSecret;
-            options.Authority = new Uri(new Uri(azureADOptions.Instance), azureADOptions.TenantId).ToString();
-            options.CallbackPath = azureADOptions.CallbackPath ?? options.CallbackPath;
-            options.SignedOutCallbackPath = azureADOptions.SignedOutCallbackPath ?? options.SignedOutCallbackPath;
-            options.SignInScheme = azureADOptions.CookieSchemeName;
+            options.ClientId = AzureADv2Options.ClientId;
+            options.ClientSecret = AzureADv2Options.ClientSecret;
+            options.Authority = new Uri(new Uri(AzureADv2Options.Instance), AzureADv2Options.TenantId).ToString();
+            options.CallbackPath = AzureADv2Options.CallbackPath ?? options.CallbackPath;
+            options.SignedOutCallbackPath = AzureADv2Options.SignedOutCallbackPath ?? options.SignedOutCallbackPath;
+            options.SignInScheme = AzureADv2Options.CookieSchemeName;
             options.UseTokenLifetime = true;
         }
 

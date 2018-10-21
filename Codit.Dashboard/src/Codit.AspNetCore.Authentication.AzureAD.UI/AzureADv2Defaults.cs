@@ -9,17 +9,17 @@ namespace Codit.AspNetCore.Authentication.AzureADv2.UI
     /// <summary>
     /// Constants for different Azure Active Directory authentication components.
     /// </summary>
-    public static class AzureADDefaults
+    public static class AzureADv2Defaults
     {        
         /// <summary>
         /// The scheme name for Open ID Connect when using
-        /// <see cref="AzureADv2AuthenticationBuilderExtensions.AddAzureAD(AuthenticationBuilder, System.Action{AzureADOptions})"/>.
+        /// <see cref="AzureADv2AuthenticationBuilderExtensions.AddAzureAD(AuthenticationBuilder, System.Action{AzureADv2Options})"/>.
         /// </summary>
         public static readonly string OpenIdScheme = "AzureADOpenID";
 
         /// <summary>
         /// The scheme name for cookies when using
-        /// <see cref="AzureADv2AuthenticationBuilderExtensions.AddAzureAD(AuthenticationBuilder, System.Action{AzureADOptions})"/>.
+        /// <see cref="AzureADv2AuthenticationBuilderExtensions.AddAzureAD(AuthenticationBuilder, System.Action{AzureADv2Options})"/>.
         /// </summary>
         public static readonly string CookieScheme = "AzureADCookie";
 
@@ -30,7 +30,7 @@ namespace Codit.AspNetCore.Authentication.AzureADv2.UI
 
         /// <summary>
         /// The scheme name for JWT Bearer when using
-        /// <see cref="AzureADv2AuthenticationBuilderExtensions.AddAzureADBearer(AuthenticationBuilder, System.Action{AzureADOptions})"/>.
+        /// <see cref="AzureADv2AuthenticationBuilderExtensions.AddAzureADBearer(AuthenticationBuilder, System.Action{AzureADv2Options})"/>.
         /// </summary>
         public static readonly string JwtBearerAuthenticationScheme = "AzureADJwtBearer";
 

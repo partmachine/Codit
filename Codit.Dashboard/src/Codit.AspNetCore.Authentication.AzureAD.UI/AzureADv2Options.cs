@@ -9,7 +9,7 @@ namespace Codit.AspNetCore.Authentication.AzureADv2.UI
     /// <summary>
     /// Options for configuring authentication using Azure Active Directory.
     /// </summary>
-    public class AzureADOptions
+    public class AzureADv2Options
     {
         /// <summary>
         /// Gets or sets the OpenID Connect authentication scheme to use for authentication with this instance
