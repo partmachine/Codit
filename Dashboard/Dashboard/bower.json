@@ -1,7 +1,7 @@
 {
   "name": "codit",
   "description": "codit dashboard",
-  "main": "wwwroot/js/site.min.js",
+  "main": "wwwroot/js/site.js",
   "authors": [
     "Rene van Geffen"
   ],
@@ -38,7 +38,7 @@
     "gauge.js": "gauge.js#^1.2.1",
     "bootstrap-progressbar": "^0.9.0",
     "iCheck": "icheck#^1.0.2",
-    "Flot": "flot#^0.8.3",
+    "Flot": "flot#v0.8.3",
     "bootstrap-daterangepicker": "git@github.com:christianesperar/bootstrap-daterangepicker.git#master",
     "skycons": "https://github.com/darkskyapp/skycons.git",
     "jquery-sparkline": "^2.1.3",
@@ -79,9 +79,12 @@
     "echarts": "^3.1.7",
     "malihu-custom-scrollbar-plugin": "^3.1.3",
     "animate.css": "^3.5.1",
-    "jqvmap": "https://github.com/christianesperar/jqvmap.git#master",    
-    "flot.curvedlines": "^1.1.1",
+    "jqvmap": "https://github.com/christianesperar/jqvmap.git#master",
     "flot.orderbars": "*",
-    "flot-spline": "^0.8.2"
+    "flot-spline": "^0.8.2",
+    "flot.curvedlines": "1.1.0"
+  },
+  "resolutions": {
+    "jquery": ">= 1.4.2"
   }
 }

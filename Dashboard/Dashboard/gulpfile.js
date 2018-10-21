@@ -1,4 +1,5 @@
-﻿var gulp = require('gulp'),
+﻿/// <binding AfterBuild='default' />
+var gulp = require('gulp'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
     rename = require('gulp-rename'),
@@ -6,12 +7,12 @@
     autoprefixer = require('gulp-autoprefixer'),
     browserSync = require('browser-sync').create();
 
-var DEST = 'wwwroot/dist';
+var DEST = 'wwwroot';
 
 gulp.task('scripts', function () {
     return gulp.src([
-        'wwwroot/js/helpers/*.js',
-        'wwwroot/js/*.js',
+        './wwwsrc/js/helpers/*.js',
+        'wwwsrc/js/*.js',
     ])
         .pipe(concat('site.js'))
         .pipe(gulp.dest(DEST + '/js'))
@@ -21,40 +22,47 @@ gulp.task('scripts', function () {
         .pipe(browserSync.stream());
 });
 
+
+
 // TODO: Maybe we can simplify how sass compile the minify and unminify version
-var compileSASS = function (filename, options) {
-    return sass('src/scss/*.scss', options)
+var compileSASS = function (filename, theme, options) {
+
+
+    var src = './wwwsrc/scss/' + filename + '.' + theme + '.scss';
+    var dst = filename + '.' + theme + '.css';
+
+    if (options.style == 'compressed') {
+        dst = filename + '.' + theme + '.min.css';
+    }
+
+    if (theme === '' || theme == null) {
+        src = './wwwsrc/scss/' + filename + '.scss';
+        dst = filename + '.css';
+        if (options.style == 'compressed') {
+            dst = filename + '.min.css';
+        }
+    }
+    
+    console.log('compiling ' + src);
+    
+    return sass(src, options)
         .pipe(autoprefixer('last 2 versions', '> 5%'))
-        .pipe(concat(filename))
+        .pipe(concat(dst))
         .pipe(gulp.dest(DEST + '/css'))
         .pipe(browserSync.stream());
+    
 };
 
-gulp.task('sass', function () {
-    return compileSASS('custom.css', {});
+gulp.task('sass', function () {   
+
+    compileSASS('custom',null, {});
+    return compileSASS('custom', 'dark', {});
 });
 
 gulp.task('sass-minify', function () {
-    return compileSASS('custom.min.css', { style: 'compressed' });
-});
-
-gulp.task('browser-sync', function () {
-    browserSync.init({
-        server: {
-            baseDir: './'
-        },
-        startPath: './production/index.html'
-    });
-});
-
-gulp.task('watch', function () {
-    // Watch .html files
-    gulp.watch('production/*.html', browserSync.reload);
-    // Watch .js files
-    gulp.watch('src/js/*.js', ['scripts']);
-    // Watch .scss files
-    gulp.watch('src/scss/*.scss', ['sass', 'sass-minify']);
+    compileSASS('custom', null, { style: 'compressed' });
+    return compileSASS('custom', 'dark', { style: 'compressed' });
 });
 
 // Default Task
-gulp.task('default', ['browser-sync', 'watch']);
+gulp.task('default', ['scripts', 'sass','sass-minify']);

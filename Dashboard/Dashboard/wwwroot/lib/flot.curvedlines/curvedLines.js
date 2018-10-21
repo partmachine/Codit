@@ -87,7 +87,6 @@ ____________________________________________________
  *
  *  v1.0.0 API Break marked existing implementation/options as deprecated
  *  v1.1.0 added the new curved line calculations based on hermite splines
- *  v1.1.1 added a rough parameter check to make sure the new options are used
  */
 
 (function($) {
@@ -121,11 +120,7 @@ ____________________________________________________
 			var nrPoints = datapoints.points.length / datapoints.pointsize;
 			var EPSILON = 0.005;
 
-			//detects missplaced legacy parameters (prior v1.x.x) in the options object
-			//this can happen if somebody upgrades to v1.x.x without adjusting the parameters or uses old examples
-            var invalidLegacyOptions = hasInvalidParameters(series.curvedLines);
-
-			if (!invalidLegacyOptions && series.curvedLines.apply == true && series.originSeries === undefined && nrPoints > (1 + EPSILON)) {
+			if (series.curvedLines.apply == true && series.originSeries === undefined && nrPoints > (1 + EPSILON)) {
 				if (series.lines.fill) {
 
 					var pointsTop = calculateCurvePoints(datapoints, series.curvedLines, 1);
@@ -457,17 +452,6 @@ ____________________________________________________
 
 			return result;
 		}
-		
-		function hasInvalidParameters(curvedLinesOptions) {
-			if (typeof curvedLinesOptions.fit != 'undefined' ||
-			    typeof curvedLinesOptions.curvePointFactor != 'undefined' ||
-			    typeof curvedLinesOptions.fitPointDist != 'undefined') {
-			    	throw new Error("CurvedLines detected illegal parameters. The CurvedLines API changed with version 1.0.0 please check the options object.");
-			    	return true;
-			    }
-			return false;
-		}
-		
 
 	}//end init
 
@@ -476,7 +460,7 @@ ____________________________________________________
 		init : init,
 		options : options,
 		name : 'curvedLines',
-		version : '1.1.1'
+		version : '1.1.0'
 	});
 
 })(jQuery);

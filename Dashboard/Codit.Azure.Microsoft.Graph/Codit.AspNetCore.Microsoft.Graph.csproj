@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.5" />
+    <PackageReference Include="Microsoft.Graph" Version="1.11.0" />
+    <PackageReference Include="Microsoft.Identity.Client" Version="2.3.0-preview" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Codit.AspNetCore.Authentication.AzureADv2.UI\Codit.AspNetCore.Authentication.AzureADv2.UI.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNetCore.Authentication.AzureAD.UI">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.authentication.azuread.ui\2.1.1\lib\netstandard2.0\Microsoft.AspNetCore.Authentication.AzureAD.UI.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

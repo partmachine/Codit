@@ -30,11 +30,12 @@ namespace Dashboard
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
+                options.MinimumSameSitePolicy = SameSiteMode.None;                
             });
 
             services.AddAuthentication(AzureADDefaults.AuthenticationScheme)
@@ -42,6 +43,9 @@ namespace Dashboard
 
             services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
             {
+                //options.Authority = options.Authority + "/v2.0/";
+
+
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     // Instead of using the default validation (validating against a single issuer value, as we do in
@@ -67,11 +71,11 @@ namespace Dashboard
                         context.HandleResponse(); // Suppress the exception
                         return Task.CompletedTask;
                     },
-                    // If your application needs to do authenticate single users, add your user validation below.
-                    //OnTokenValidated = context =>
-                    //{
-                    //    return myUserValidationLogic(context.Ticket.Principal);
-                    //}
+                   // If your application needs to do authenticate single users, add your user validation below.
+                   OnTokenValidated = context =>
+                   {
+                       return Task.FromResult(true);// myUserValidationLogic(context.Ticket.Principal);
+                   }
                 };
             });
 

@@ -3,7 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dashboard", "Dashboard\Dashboard.csproj", "{7BC51BB9-4091-40DB-9277-0595E51F1E2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dashboard", "Dashboard\Dashboard.csproj", "{7BC51BB9-4091-40DB-9277-0595E51F1E2A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Codit.Azure.GraphApi", "Codit.Azure.GraphApi\Codit.Azure.GraphApi.csproj", "{561EFF4B-3A5A-4B57-94F9-CF1E740DEA20}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Codit.Azure.GraphApi.Test", "UnitTestProject1\Codit.Azure.GraphApi.Test.csproj", "{CA661057-362B-40F4-BED1-80D6450397AD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Codit.AspNetCore.Microsoft.Graph", "Codit.Azure.Microsoft.Graph\Codit.AspNetCore.Microsoft.Graph.csproj", "{00972E22-DFA1-4E17-98CF-2C22A67754E0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Codit.AspNetCore.Authentication", "Codit.AspNetCore.Authentication\Codit.AspNetCore.Authentication.csproj", "{4850040A-F63C-420B-96EF-47FAD19C68E5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Codit.AspNetCore.Authentication.AzureADv2.UI", "Codit.AspNetCore.Authentication.AzureADv2.UI\Codit.AspNetCore.Authentication.AzureADv2.UI.csproj", "{6C3353C8-8184-4531-8B34-6A5635229FC4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +25,26 @@ Global
 		{7BC51BB9-4091-40DB-9277-0595E51F1E2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BC51BB9-4091-40DB-9277-0595E51F1E2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BC51BB9-4091-40DB-9277-0595E51F1E2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{561EFF4B-3A5A-4B57-94F9-CF1E740DEA20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{561EFF4B-3A5A-4B57-94F9-CF1E740DEA20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{561EFF4B-3A5A-4B57-94F9-CF1E740DEA20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{561EFF4B-3A5A-4B57-94F9-CF1E740DEA20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA661057-362B-40F4-BED1-80D6450397AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA661057-362B-40F4-BED1-80D6450397AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA661057-362B-40F4-BED1-80D6450397AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA661057-362B-40F4-BED1-80D6450397AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00972E22-DFA1-4E17-98CF-2C22A67754E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00972E22-DFA1-4E17-98CF-2C22A67754E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00972E22-DFA1-4E17-98CF-2C22A67754E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00972E22-DFA1-4E17-98CF-2C22A67754E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4850040A-F63C-420B-96EF-47FAD19C68E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4850040A-F63C-420B-96EF-47FAD19C68E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4850040A-F63C-420B-96EF-47FAD19C68E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4850040A-F63C-420B-96EF-47FAD19C68E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C3353C8-8184-4531-8B34-6A5635229FC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C3353C8-8184-4531-8B34-6A5635229FC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C3353C8-8184-4531-8B34-6A5635229FC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C3353C8-8184-4531-8B34-6A5635229FC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

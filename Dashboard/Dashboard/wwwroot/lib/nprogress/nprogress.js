@@ -118,7 +118,8 @@
    *     NProgress.start();
    *
    */
-  NProgress.start = function() {
+    NProgress.start = function () {
+        
     if (!NProgress.status) NProgress.set(0);
 
     var work = function() {
@@ -146,7 +147,8 @@
    *     NProgress.done(true);
    */
 
-  NProgress.done = function(force) {
+    NProgress.done = function (force) {
+        
     if (!force && !NProgress.status) return this;
 
     return NProgress.inc(0.3 + 0.5 * Math.random()).set(1);
