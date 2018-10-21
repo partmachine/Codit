@@ -2,8 +2,10 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.using Microsoft.AspNetCore.Authorization;
 
 using System;
+using System.Linq;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 
 namespace Codit.AspNetCore.Authentication.AzureADv2.UI
 {
@@ -29,11 +31,16 @@ namespace Codit.AspNetCore.Authentication.AzureADv2.UI
 
             options.ClientId = AzureADv2Options.ClientId;
             options.ClientSecret = AzureADv2Options.ClientSecret;
-            options.Authority = new Uri(new Uri(AzureADv2Options.Instance), AzureADv2Options.TenantId).ToString();
+            options.Authority = $"{AzureADv2Options.Instance}common/v2.0";
             options.CallbackPath = AzureADv2Options.CallbackPath ?? options.CallbackPath;
             options.SignedOutCallbackPath = AzureADv2Options.SignedOutCallbackPath ?? options.SignedOutCallbackPath;
             options.SignInScheme = AzureADv2Options.CookieSchemeName;
             options.UseTokenLifetime = true;
+            options.RequireHttpsMetadata = false;           
+            options.ResponseType = OpenIdConnectResponseType.CodeIdToken;
+
+            var allScopes = $"{AzureADv2Options.Scopes} {AzureADv2Options.GraphScopes}".Split(new[] { ' ' }).Distinct();
+            foreach (var scope in allScopes) { options.Scope.Add(scope); }
         }
 
         private string GetAzureADScheme(string name)
