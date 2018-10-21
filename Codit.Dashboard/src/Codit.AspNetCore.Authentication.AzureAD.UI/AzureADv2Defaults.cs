@@ -13,13 +13,13 @@ namespace Codit.AspNetCore.Authentication.AzureADv2.UI
     {        
         /// <summary>
         /// The scheme name for Open ID Connect when using
-        /// <see cref="AzureADv2AuthenticationBuilderExtensions.AddAzureAD(AuthenticationBuilder, System.Action{AzureADv2Options})"/>.
+        /// <see cref="AzureADv2AuthenticationBuilderExtensions.AddAzureADv2(AuthenticationBuilder, System.Action{AzureADv2Options})"/>.
         /// </summary>
         public static readonly string OpenIdScheme = "AzureADOpenID";
 
         /// <summary>
         /// The scheme name for cookies when using
-        /// <see cref="AzureADv2AuthenticationBuilderExtensions.AddAzureAD(AuthenticationBuilder, System.Action{AzureADv2Options})"/>.
+        /// <see cref="AzureADv2AuthenticationBuilderExtensions.AddAzureADv2(AuthenticationBuilder, System.Action{AzureADv2Options})"/>.
         /// </summary>
         public static readonly string CookieScheme = "AzureADCookie";
 

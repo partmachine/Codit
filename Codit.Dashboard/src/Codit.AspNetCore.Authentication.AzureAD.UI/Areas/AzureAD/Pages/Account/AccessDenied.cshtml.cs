@@ -4,7 +4,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Codit.AspNetCore.Authentication.AzureADv2.UI.Internal
+namespace Microsoft.AspNetCore.Authentication.AzureAD.UI.Internal
 {
     /// <summary>
     /// This API supports infrastructure and is not intended to be used

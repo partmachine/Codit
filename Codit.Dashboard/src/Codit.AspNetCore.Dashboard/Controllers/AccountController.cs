@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.AzureAD.UI;
+using Codit.AspNetCore.Authentication.AzureADv2.UI;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
@@ -22,7 +22,7 @@ namespace Dashboard.Controllers
             var redirectUrl = Url.Action(nameof(HomeController.Index), "Home");
             return Challenge(
                 new AuthenticationProperties { RedirectUri = redirectUrl },
-                AzureADDefaults.AuthenticationScheme);
+                AzureADv2Defaults.AuthenticationScheme);
         }
 
         [Authorize]
@@ -31,7 +31,7 @@ namespace Dashboard.Controllers
         {
             var callbackUrl = Url.Action(nameof(SignedOut), "Account", values: null, protocol: Request.Scheme);
             return SignOut(
-                new AuthenticationProperties { RedirectUri = callbackUrl }, AzureADDefaults.CookieScheme, AzureADDefaults.OpenIdScheme, AzureADDefaults.AuthenticationScheme);
+                new AuthenticationProperties { RedirectUri = callbackUrl }, AzureADv2Defaults.CookieScheme, AzureADv2Defaults.OpenIdScheme, AzureADv2Defaults.AuthenticationScheme);
         }
 
         [HttpGet]

@@ -76,8 +76,8 @@ namespace Microsoft.AspNetCore.Authentication
         /// <see cref="AzureADv2Options"/>
         /// </param>
         /// <returns>The <see cref="AuthenticationBuilder"/>.</returns>
-        public static AuthenticationBuilder AddAzureAD(this AuthenticationBuilder builder, Action<AzureADv2Options> configureOptions) =>
-            builder.AddAzureAD(
+        public static AuthenticationBuilder AddAzureADv2(this AuthenticationBuilder builder, Action<AzureADv2Options> configureOptions) =>
+            builder.AddAzureADv2(
                 AzureADv2Defaults.AuthenticationScheme,
                 AzureADv2Defaults.OpenIdScheme,
                 AzureADv2Defaults.CookieScheme,
@@ -96,7 +96,7 @@ namespace Microsoft.AspNetCore.Authentication
         /// <see cref="AzureADv2Options"/>
         /// </param>
         /// <returns>The <see cref="AuthenticationBuilder"/>.</returns>
-        public static AuthenticationBuilder AddAzureAD(
+        public static AuthenticationBuilder AddAzureADv2(
             this AuthenticationBuilder builder,
             string scheme,
             string openIdConnectScheme,

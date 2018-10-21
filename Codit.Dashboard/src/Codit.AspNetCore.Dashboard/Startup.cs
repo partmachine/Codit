@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.AzureAD.UI;
+using Codit.AspNetCore.Authentication.AzureADv2.UI;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -38,10 +38,10 @@ namespace Dashboard
                 options.MinimumSameSitePolicy = SameSiteMode.None;                
             });
 
-            services.AddAuthentication(AzureADDefaults.AuthenticationScheme)
-                .AddAzureAD(options => Configuration.Bind("AzureAd", options));
+            services.AddAuthentication(AzureADv2Defaults.AuthenticationScheme)
+                .AddAzureADv2(options => Configuration.Bind("AzureAd", options));
 
-            services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
+            services.Configure<OpenIdConnectOptions>(AzureADv2Defaults.OpenIdScheme, options =>
             {
                 //options.Authority = options.Authority + "/v2.0/";
 
@@ -71,10 +71,10 @@ namespace Dashboard
                         context.HandleResponse(); // Suppress the exception
                         return Task.CompletedTask;
                     },
-                   // If your application needs to do authenticate single users, add your user validation below.
-                   OnTokenValidated = context =>
-                   {
-                       return Task.FromResult(true);// myUserValidationLogic(context.Ticket.Principal);
+                    // If your application needs to do authenticate single users, add your user validation below.
+                    OnTokenValidated = context =>
+                    {
+                        return Task.FromResult(true);// myUserValidationLogic(context.Ticket.Principal);
                    }
                 };
             });
