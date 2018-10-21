@@ -3,13 +3,13 @@
 
 using Microsoft.Extensions.Options;
 
-namespace Microsoft.AspNetCore.Authentication.AzureAD.UI
+namespace Codit.AspNetCore.Authentication.AzureADv2.UI
 {
-    internal class AzureADOptionsConfiguration : IConfigureNamedOptions<AzureADOptions>
+    internal class AzureADv2OptionsConfiguration : IConfigureNamedOptions<AzureADOptions>
     {
         private readonly IOptions<AzureADSchemeOptions> _schemeOptions;
 
-        public AzureADOptionsConfiguration(IOptions<AzureADSchemeOptions> schemeOptions)
+        public AzureADv2OptionsConfiguration(IOptions<AzureADSchemeOptions> schemeOptions)
         {
             _schemeOptions = schemeOptions;
         }

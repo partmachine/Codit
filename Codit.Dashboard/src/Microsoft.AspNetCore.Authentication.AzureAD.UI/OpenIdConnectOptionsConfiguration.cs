@@ -5,7 +5,7 @@ using System;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.Extensions.Options;
 
-namespace Microsoft.AspNetCore.Authentication.AzureAD.UI
+namespace Codit.AspNetCore.Authentication.AzureADv2.UI
 {
     internal class OpenIdConnectOptionsConfiguration : IConfigureNamedOptions<OpenIdConnectOptions>
     {

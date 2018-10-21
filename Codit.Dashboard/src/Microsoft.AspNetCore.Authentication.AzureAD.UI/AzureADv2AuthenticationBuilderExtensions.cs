@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.AspNetCore.Authentication.AzureAD.UI;
+using Codit.AspNetCore.Authentication.AzureADv2.UI;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
@@ -18,7 +18,7 @@ namespace Microsoft.AspNetCore.Authentication
     /// <summary>
     /// Extension methods to add Azure Active Directory Authentication to your application.
     /// </summary>
-    public static class AzureADAuthenticationBuilderExtensions
+    public static class AzureADv2AuthenticationBuilderExtensions
     {
         /// <summary>
         /// Adds JWT Bearer authentication to your app for Azure Active Directory Applications.
@@ -58,7 +58,7 @@ namespace Microsoft.AspNetCore.Authentication
 
             builder.Services.Configure(TryAddJwtBearerSchemeMapping(scheme, jwtBearerScheme));
 
-            builder.Services.TryAddSingleton<IConfigureOptions<AzureADOptions>, AzureADOptionsConfiguration>();
+            builder.Services.TryAddSingleton<IConfigureOptions<AzureADOptions>, AzureADv2OptionsConfiguration>();
 
             builder.Services.TryAddSingleton<IConfigureOptions<JwtBearerOptions>, JwtBearerOptionsConfiguration>();
 
@@ -113,7 +113,7 @@ namespace Microsoft.AspNetCore.Authentication
 
             builder.Services.Configure(TryAddOpenIDCookieSchemeMappings(scheme, openIdConnectScheme, cookieScheme));
 
-            builder.Services.TryAddSingleton<IConfigureOptions<AzureADOptions>, AzureADOptionsConfiguration>();
+            builder.Services.TryAddSingleton<IConfigureOptions<AzureADOptions>, AzureADv2OptionsConfiguration>();
 
             builder.Services.TryAddSingleton<IConfigureOptions<OpenIdConnectOptions>, OpenIdConnectOptionsConfiguration>();
 
@@ -203,7 +203,7 @@ namespace Microsoft.AspNetCore.Authentication
                         }
                     }
 
-                    apm.FeatureProviders.Add(new AzureADAccountControllerFeatureProvider());
+                    apm.FeatureProviders.Add(new AzureADv2AccountControllerFeatureProvider());
                 });
 
             bool HasSameName(string left, string right) => string.Equals(left, right, StringComparison.Ordinal);
@@ -211,7 +211,7 @@ namespace Microsoft.AspNetCore.Authentication
 
         private static IEnumerable<ApplicationPart> GetAdditionalParts()
         {
-            var thisAssembly = typeof(AzureADAuthenticationBuilderExtensions).Assembly;
+            var thisAssembly = typeof(AzureADv2AuthenticationBuilderExtensions).Assembly;
             var relatedAssemblies = RelatedAssemblyAttribute.GetRelatedAssemblies(thisAssembly, throwOnError: true);
 
             foreach (var reference in relatedAssemblies)

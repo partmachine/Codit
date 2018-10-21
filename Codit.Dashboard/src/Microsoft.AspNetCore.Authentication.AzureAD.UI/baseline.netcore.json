@@ -1,5 +1,5 @@
 {
-  "AssemblyIdentity": "Microsoft.AspNetCore.Authentication.AzureAD.UI, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60",
+  "AssemblyIdentity": "Codit.AspNetCore.Authentication.AzureADv2.UI, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60",
   "Types": [
     {
       "Name": "Microsoft.AspNetCore.Authentication.AzureADAuthenticationBuilderExtensions",
@@ -20,7 +20,7 @@
             },
             {
               "Name": "configureOptions",
-              "Type": "System.Action<Microsoft.AspNetCore.Authentication.AzureAD.UI.AzureADOptions>"
+              "Type": "System.Action<Codit.AspNetCore.Authentication.AzureADv2.UI.AzureADOptions>"
             }
           ],
           "ReturnType": "Microsoft.AspNetCore.Authentication.AuthenticationBuilder",
@@ -47,7 +47,7 @@
             },
             {
               "Name": "configureOptions",
-              "Type": "System.Action<Microsoft.AspNetCore.Authentication.AzureAD.UI.AzureADOptions>"
+              "Type": "System.Action<Codit.AspNetCore.Authentication.AzureADv2.UI.AzureADOptions>"
             }
           ],
           "ReturnType": "Microsoft.AspNetCore.Authentication.AuthenticationBuilder",
@@ -66,7 +66,7 @@
             },
             {
               "Name": "configureOptions",
-              "Type": "System.Action<Microsoft.AspNetCore.Authentication.AzureAD.UI.AzureADOptions>"
+              "Type": "System.Action<Codit.AspNetCore.Authentication.AzureADv2.UI.AzureADOptions>"
             }
           ],
           "ReturnType": "Microsoft.AspNetCore.Authentication.AuthenticationBuilder",
@@ -101,7 +101,7 @@
             },
             {
               "Name": "configureOptions",
-              "Type": "System.Action<Microsoft.AspNetCore.Authentication.AzureAD.UI.AzureADOptions>"
+              "Type": "System.Action<Codit.AspNetCore.Authentication.AzureADv2.UI.AzureADOptions>"
             }
           ],
           "ReturnType": "Microsoft.AspNetCore.Authentication.AuthenticationBuilder",
@@ -114,7 +114,7 @@
       "GenericParameters": []
     },
     {
-      "Name": "Microsoft.AspNetCore.Authentication.AzureAD.UI.AzureADDefaults",
+      "Name": "Codit.AspNetCore.Authentication.AzureADv2.UI.AzureADDefaults",
       "Visibility": "Public",
       "Kind": "Class",
       "Abstract": true,
@@ -186,7 +186,7 @@
       "GenericParameters": []
     },
     {
-      "Name": "Microsoft.AspNetCore.Authentication.AzureAD.UI.AzureADOptions",
+      "Name": "Codit.AspNetCore.Authentication.AzureADv2.UI.AzureADOptions",
       "Visibility": "Public",
       "Kind": "Class",
       "ImplementedInterfaces": [],
@@ -407,7 +407,7 @@
       "GenericParameters": []
     },
     {
-      "Name": "Microsoft.AspNetCore.Authentication.AzureAD.UI.AzureADSchemeOptions+AzureADOpenIDSchemeMapping",
+      "Name": "Codit.AspNetCore.Authentication.AzureADv2.UI.AzureADSchemeOptions+AzureADOpenIDSchemeMapping",
       "Visibility": "Public",
       "Kind": "Class",
       "ImplementedInterfaces": [],
@@ -465,7 +465,7 @@
       "GenericParameters": []
     },
     {
-      "Name": "Microsoft.AspNetCore.Authentication.AzureAD.UI.AzureADSchemeOptions+JwtBearerSchemeMapping",
+      "Name": "Codit.AspNetCore.Authentication.AzureADv2.UI.AzureADSchemeOptions+JwtBearerSchemeMapping",
       "Visibility": "Public",
       "Kind": "Class",
       "ImplementedInterfaces": [],

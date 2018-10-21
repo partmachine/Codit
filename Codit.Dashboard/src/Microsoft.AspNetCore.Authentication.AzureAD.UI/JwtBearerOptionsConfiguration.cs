@@ -2,7 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.using Microsoft.AspNetCore.Authorization;
 
 using System;
-using Microsoft.AspNetCore.Authentication.AzureAD.UI;
+using Codit.AspNetCore.Authentication.AzureADv2.UI;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
 

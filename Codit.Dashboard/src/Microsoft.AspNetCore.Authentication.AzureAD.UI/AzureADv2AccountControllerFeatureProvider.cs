@@ -3,13 +3,13 @@
 
 using System.Collections.Generic;
 using System.Reflection;
-using Microsoft.AspNetCore.Authentication.AzureAD.UI.AzureAD.Controllers.Internal;
+using Codit.AspNetCore.Authentication.AzureADv2.UI.AzureAD.Controllers.Internal;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.AspNetCore.Mvc.Controllers;
 
-namespace Microsoft.AspNetCore.Authentication.AzureAD.UI
+namespace Codit.AspNetCore.Authentication.AzureADv2.UI
 {
-    internal class AzureADAccountControllerFeatureProvider : IApplicationFeatureProvider<ControllerFeature>, IApplicationFeatureProvider
+    internal class AzureADv2AccountControllerFeatureProvider : IApplicationFeatureProvider<ControllerFeature>, IApplicationFeatureProvider
     {
         public void PopulateFeature(IEnumerable<ApplicationPart> parts, ControllerFeature feature)
         {

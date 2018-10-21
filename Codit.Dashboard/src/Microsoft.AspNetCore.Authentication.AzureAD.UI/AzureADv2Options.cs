@@ -4,7 +4,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 
-namespace Microsoft.AspNetCore.Authentication.AzureAD.UI
+namespace Codit.AspNetCore.Authentication.AzureADv2.UI
 {
     /// <summary>
     /// Options for configuring authentication using Azure Active Directory.
@@ -68,5 +68,20 @@ namespace Microsoft.AspNetCore.Authentication.AzureAD.UI
         /// Gets all the underlying authentication schemes.
         /// </summary>
         public string[] AllSchemes => new[] { CookieSchemeName, OpenIdConnectSchemeName };
+
+        /// <summary>
+        /// Gets the base url for this application.
+        /// </summary>
+        public string BaseUrl { get; set; }
+
+        /// <summary>
+        /// Gets the requested openid scopes.
+        /// </summary>
+        public string Scopes { get; set; } = "openid email profile offline_access";
+
+        /// <summary>
+        /// Gets the requested Microsoft Graph scopes.
+        /// </summary>
+        public string GraphScopes { get; set; } = "User.Read User.ReadBasic.All";
     }
 }

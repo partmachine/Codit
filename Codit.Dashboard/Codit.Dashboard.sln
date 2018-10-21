@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.AspNetCore.Authentication.AzureAD.UI", "src\Microsoft.AspNetCore.Authentication.AzureAD.UI\Microsoft.AspNetCore.Authentication.AzureAD.UI.csproj", "{A6F30A0D-78E8-4A7E-88B7-27E13FE6E27D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Codit.AspNetCore.Authentication.AzureADv2.UI", "src\Microsoft.AspNetCore.Authentication.AzureAD.UI\Codit.AspNetCore.Authentication.AzureADv2.UI.csproj", "{A6F30A0D-78E8-4A7E-88B7-27E13FE6E27D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
