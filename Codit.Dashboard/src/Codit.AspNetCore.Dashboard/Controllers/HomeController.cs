@@ -8,17 +8,30 @@ using Microsoft.AspNetCore.Mvc;
 using Dashboard.Models;
 using System.IdentityModel.Tokens;
 using Microsoft.Identity.Client;
+using Codit.AspNetCore.Microsoft.Graph;
 
 namespace Dashboard.Controllers
 {
     [Authorize]
     public class HomeController : Controller
     {
-        [AllowAnonymous]
-        public IActionResult Index()
+        GraphClient _msgraph;
+        public HomeController(GraphClient msgraph)
         {
+            _msgraph = msgraph;
+        }
+        [AllowAnonymous]
+        public async Task<IActionResult> Index()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                var profile = await _msgraph.GetUserJson();
 
-            
+                var photo = await _msgraph.GetPictureBase64();
+
+                var mail = await _msgraph.ReadMail();
+
+            }
 
             return View();
         }

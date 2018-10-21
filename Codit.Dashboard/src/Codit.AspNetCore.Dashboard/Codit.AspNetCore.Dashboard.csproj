@@ -25,7 +25,7 @@
     <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.5" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0-preview3-35497" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Identity.Client" Version="2.3.0-preview" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0-preview3-35497" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,6 +35,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Codit.AspNetCore.Authentication.AzureAD.UI\Codit.AspNetCore.Authentication.AzureADv2.UI.csproj" />
+    <ProjectReference Include="..\Codit.AspNetCore.Microsoft.Graph\Codit.AspNetCore.Microsoft.Graph.csproj" />
   </ItemGroup>
 
   <ItemGroup>

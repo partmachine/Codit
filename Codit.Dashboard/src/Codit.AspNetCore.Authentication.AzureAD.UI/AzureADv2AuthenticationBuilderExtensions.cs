@@ -121,8 +121,12 @@ namespace Microsoft.AspNetCore.Authentication
 
             builder.Services.Configure(scheme, configureOptions);
 
+            builder.Services.AddMemoryCache();
+
             builder.AddOpenIdConnect(openIdConnectScheme, null, o => { });
             builder.AddCookie(cookieScheme, null, o => { });
+
+            
 
             return builder;
         }

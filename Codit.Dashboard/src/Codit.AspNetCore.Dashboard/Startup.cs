@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Codit.AspNetCore.Microsoft.Graph;
 
 namespace Dashboard
 {
@@ -39,45 +40,9 @@ namespace Dashboard
             });
 
             services.AddAuthentication(AzureADv2Defaults.AuthenticationScheme)
-                .AddAzureADv2(options => Configuration.Bind("AzureAd", options));
+                .AddAzureADv2(options => Configuration.Bind("AzureAdv2", options));
 
-            services.Configure<OpenIdConnectOptions>(AzureADv2Defaults.OpenIdScheme, options =>
-            {
-                //options.Authority = options.Authority + "/v2.0/";
-
-
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    // Instead of using the default validation (validating against a single issuer value, as we do in
-                    // line of business apps), we inject our own multitenant validation logic
-                    ValidateIssuer = false,
-
-                    // If the app is meant to be accessed by entire organizations, add your issuer validation logic here.
-                    //IssuerValidator = (issuer, securityToken, validationParameters) => {
-                    //    if (myIssuerValidationLogic(issuer)) return issuer;
-                    //}
-                };
-
-                options.Events = new OpenIdConnectEvents
-                {
-                    OnTicketReceived = context =>
-                    {
-                        // If your authentication logic is based on users then add your logic here
-                        return Task.CompletedTask;
-                    },
-                    OnAuthenticationFailed = context =>
-                    {
-                        context.Response.Redirect("/Error");
-                        context.HandleResponse(); // Suppress the exception
-                        return Task.CompletedTask;
-                    },
-                    // If your application needs to do authenticate single users, add your user validation below.
-                    OnTokenValidated = context =>
-                    {
-                        return Task.FromResult(true);// myUserValidationLogic(context.Ticket.Principal);
-                   }
-                };
-            });
+            services.AddMicrosoftGraph();
 
             services.AddMvc(options =>
             {
@@ -105,7 +70,7 @@ namespace Dashboard
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            
             app.UseAuthentication();
 
             app.UseMvc(routes =>

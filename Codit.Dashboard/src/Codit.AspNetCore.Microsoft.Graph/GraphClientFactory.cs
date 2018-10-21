@@ -2,7 +2,7 @@
 using System;
 using System.Net.Http.Headers;
 
-namespace Codit.Azure.Microsoft.Graph
+namespace Codit.AspNetCore.Microsoft.Graph
 {
     /// <summary>
     /// 
@@ -31,14 +31,21 @@ namespace Codit.Azure.Microsoft.Graph
             _graphClient = new GraphServiceClient(new DelegateAuthenticationProvider(
                 async requestMessage =>
                 {
-                    // Passing tenant ID to the sample auth provider to use as a cache key
-                    var accessToken = await _authProvider.GetUserAccessTokenAsync(userId);
+                    try
+                    {
+                        // Passing tenant ID to the sample auth provider to use as a cache key
+                        var accessToken = await _authProvider.GetUserAccessTokenAsync(userId);
 
-                    // Append the access token to the request
-                    requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                        // Append the access token to the request
+                        requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
 
-                    // This header identifies the sample in the Microsoft Graph service. If extracting this code for your project please remove.
-                    requestMessage.Headers.Add("SampleID", "aspnetcore-connect-sample");
+                        // This header identifies the sample in the Microsoft Graph service. If extracting this code for your project please remove.
+                        requestMessage.Headers.Add("SampleID", "aspnetcore-connect-sample");
+                    }
+                    catch (Exception e)
+                    {
+                        var m = e.Message;
+                    }
                 }));
 
             return _graphClient;

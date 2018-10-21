@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using Codit.AspNetCore.Authentication.AzureADv2.UI;
 using Codit.AspNetCore.Authentication;
 
-namespace Codit.Azure.Microsoft.Graph
+namespace Codit.AspNetCore.Microsoft.Graph
 {
     public class GraphAuthProvider : IGraphAuthProvider
     {
@@ -26,7 +26,7 @@ namespace Codit.Azure.Microsoft.Graph
         public GraphAuthProvider(IMemoryCache memoryCache, IConfiguration configuration)
         {
             var azureOptions = new AzureADv2Options();
-            configuration.Bind("AzureAd", azureOptions);
+            configuration.Bind("AzureAdv2", azureOptions);
 
             _appId = azureOptions.ClientId;
             _credential = new ClientCredential(azureOptions.ClientSecret);

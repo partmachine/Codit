@@ -22,6 +22,8 @@ namespace Codit.AspNetCore.Authentication.AzureADv2.UI
             {
                 options.OpenIdConnectSchemeName = webMapping.OpenIdConnectScheme;
                 options.CookieSchemeName = webMapping.CookieScheme;
+
+
                 return;
             }
             if (_schemeOptions.Value.JwtBearerMappings.TryGetValue(name, out var mapping))
